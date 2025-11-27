@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/backBtn"
+        android:title="@string/backBtn"
+        android:icon="@drawable/ic_back"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/homeBtn"
+        android:title="@string/homeBtn"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/mypageBtn"
+        android:title="@string/mypageBtn"
+        android:icon="@drawable/ic_mypage"
+        app:showAsAction="ifRoom"/>
+</menu>
