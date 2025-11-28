@@ -14,9 +14,6 @@ public class TMDBApi {
     private static final String BASE_URL = "https://api.themoviedb.org/3/movie/";
 
     public static Retrofit getRetrofit() {
-        System.out.println("TMDB_API_KEY: " + com.example.movieapplication.BuildConfig.TMDB_API_KEY);
-
-
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override

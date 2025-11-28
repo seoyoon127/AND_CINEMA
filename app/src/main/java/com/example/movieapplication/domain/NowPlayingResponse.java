@@ -1,8 +1,8 @@
-package com.example.movieapplication.api;
+package com.example.movieapplication.domain;
 
+import com.example.movieapplication.domain.Movie;
 import com.google.gson.annotations.SerializedName;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class NowPlayingResponse {

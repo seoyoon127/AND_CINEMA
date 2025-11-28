@@ -5,6 +5,8 @@ import android.widget.LinearLayout;
 
 import com.example.movieapplication.R;
 import com.example.movieapplication.components.NowPlayingMovieUI;
+import com.example.movieapplication.domain.Movie;
+import com.example.movieapplication.domain.NowPlayingResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

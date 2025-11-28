@@ -1,6 +1,6 @@
 package com.example.movieapplication.utils;
 
-import com.example.movieapplication.api.Movie;
+import com.example.movieapplication.domain.Movie;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

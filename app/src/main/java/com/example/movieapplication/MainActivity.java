@@ -20,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.top_app_bar);
         setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("AND CINEMA");
-        }
+        getSupportActionBar().setTitle("AND CINEMA");
 
         NavigationBar.setNavigate(toolbar, this);
 

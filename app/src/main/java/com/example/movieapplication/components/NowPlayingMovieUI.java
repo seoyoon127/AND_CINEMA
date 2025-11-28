@@ -1,13 +1,16 @@
 package com.example.movieapplication.components;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.movieapplication.api.Movie;
+import com.example.movieapplication.MovieDetailActivity;
+import com.example.movieapplication.domain.Movie;
 import com.example.movieapplication.utils.DateFormat;
 
 public class NowPlayingMovieUI {
@@ -58,7 +61,18 @@ public class NowPlayingMovieUI {
             movieLayout.addView(posterImageView);
             movieLayout.addView(infoLayout);
 
-            // 5) 최상위 LinearLayout(movieContainer)에 추가
+
+            // 5) movieLayout 클릭 이벤트 추가
+            movieLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(activity, MovieDetailActivity.class);
+                    intent.putExtra("id",movie.getId());
+                    activity.startActivity(intent);
+                }
+            });
+
+            // 6) 최상위 LinearLayout(movieContainer)에 추가
             movieContainer.addView(movieLayout);
         }
     }
