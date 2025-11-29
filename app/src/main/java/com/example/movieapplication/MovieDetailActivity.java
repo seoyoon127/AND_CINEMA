@@ -2,6 +2,7 @@ package com.example.movieapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,5 +28,10 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         UseMovieDetailApi useMovieDetail = new UseMovieDetailApi(this);
         useMovieDetail.loadMovies(id);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_bar, menu);
+        return true;
     }
 }

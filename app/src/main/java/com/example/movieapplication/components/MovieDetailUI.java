@@ -1,8 +1,11 @@
 package com.example.movieapplication.components;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -10,68 +13,98 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.movieapplication.MovieDetailActivity;
+import com.example.movieapplication.domain.Genre;
 import com.example.movieapplication.domain.Movie;
 import com.example.movieapplication.domain.MovieDetail;
 import com.example.movieapplication.utils.DateFormat;
 
 public class MovieDetailUI {
-    public static void setMovie(Activity activity, MovieDetail movie, LinearLayout movieContainer){
-        // 1) 영화마다 LinearLayout 생성 (세로로 이미지+텍스트)
-        LinearLayout movieLayout = new LinearLayout(activity);
-        LinearLayout infoLayout = new LinearLayout(activity);
-        movieLayout.setOrientation(LinearLayout.HORIZONTAL);
-        infoLayout.setOrientation(LinearLayout.VERTICAL);
-        movieLayout.setPadding(8, 8, 8, 8);
 
-        // 2) ImageView 생성
+    public static void setMovie(Activity activity, MovieDetail movie, LinearLayout movieContainer) {
+
+        movieContainer.setOrientation(LinearLayout.VERTICAL);
+        movieContainer.setBackgroundColor(0xFF000000);
+
+        // 1) 포스터 전체 영역
         ImageView posterImageView = new ImageView(activity);
-        int imageWidth = 300; // px 단위, 필요하면 dp->px 변환
-        int imageHeight = 450;
+        int imageWidth = MATCH_PARENT;
+        int imageHeight = 1200;
         LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(imageWidth, imageHeight);
+        imageParams.setMargins(10,30,10,10);
         posterImageView.setLayoutParams(imageParams);
 
-        // Glide로 이미지 로딩
-        Glide.with(activity)
-                .load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath())
-                .into(posterImageView);
+        Glide.with(activity) .load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()) .into(posterImageView);
 
-        // 3) TextView 생성
+
+        // 2) 하단 Info 영역
+        LinearLayout infoLayout = new LinearLayout(activity);
+        infoLayout.setOrientation(LinearLayout.VERTICAL);
+        infoLayout.setPadding(32, 32, 32, 32);
+        LinearLayout.LayoutParams infoParams =
+                new LinearLayout.LayoutParams(MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        infoLayout.setLayoutParams(infoParams);
+
+        LinearLayout horizontalInfo1 = new LinearLayout(activity);
+        horizontalInfo1.setOrientation(LinearLayout.HORIZONTAL);
+        horizontalInfo1.setGravity(Gravity.CENTER);
+        horizontalInfo1.setPadding(32, 32, 32, 32);
+
+        LinearLayout horizontalInfo2 = new LinearLayout(activity);
+        horizontalInfo2.setOrientation(LinearLayout.HORIZONTAL);
+        horizontalInfo2.setGravity(Gravity.CENTER);
+        horizontalInfo2.setPadding(32, 0, 32, 32);
+
+        // 3) 텍스트들 생성
         TextView titleTextView = new TextView(activity);
         titleTextView.setText(movie.getTitle());
-        titleTextView.setTextSize(20);
-        titleTextView.setSingleLine(true);
-        titleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        titleTextView.setPadding(16, 0, 0, 0);
+        titleTextView.setTextSize(26);
+        titleTextView.setTextColor(0xFFFFFFFF);
+        titleTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         TextView releaseDateTextView = new TextView(activity);
-        releaseDateTextView.setText(String.valueOf(movie.getReleaseDate()));
+        releaseDateTextView.setText(movie.getReleaseDate() + " 개봉 | ");
         releaseDateTextView.setTextSize(16);
-        releaseDateTextView.setPadding(16, 0, 0, 0);
+        releaseDateTextView.setTextColor(0xFFDDDDDD);
+
+        TextView runtimeTextView = new TextView(activity);
+        runtimeTextView.setText(" \uD83D\uDD51" + movie.getRuntime() + "분 | ");
+        runtimeTextView.setTextSize(16);
+        runtimeTextView.setTextColor(0xFFDDDDDD);
 
         TextView rateTextView = new TextView(activity);
-        rateTextView.setText("⭐" + String.format("%.2f",movie.getVoteAverage()));
+        rateTextView.setText("⭐ " + String.format("%.2f", movie.getVoteAverage()));
         rateTextView.setTextSize(16);
-        rateTextView.setPadding(16, 0, 0, 0);
+        rateTextView.setTextColor(0xFFFFFFFF);
 
-        // 4) LinearLayout에 ImageView, TextView 추가
+        TextView overviewTextView = new TextView(activity);
+        overviewTextView.setText(movie.getOverview());
+        overviewTextView.setTextSize(18);
+        overviewTextView.setTextColor(0xFFFFFFFF);
+
+        int cnt = 0;
+        for (Genre genre: movie.getGenres()){
+            if (cnt == 3) break;
+            TextView genreTextView = new TextView(activity);
+            genreTextView.setText((cnt == 0 ? "[ " : "") + genre.getName() + (cnt == 2 ? " ]" : ", "));
+            genreTextView.setTextSize(16);
+            genreTextView.setTextColor(0xFFFFFFFF);
+            horizontalInfo2.addView(genreTextView);
+            cnt ++;
+        }
+
+        // 4) infoLayout에 추가
         infoLayout.addView(titleTextView);
-        infoLayout.addView(releaseDateTextView);
-        infoLayout.addView(rateTextView);
-        movieLayout.addView(posterImageView);
-        movieLayout.addView(infoLayout);
 
+        horizontalInfo1.addView(releaseDateTextView);
+        horizontalInfo1.addView(runtimeTextView);
+        horizontalInfo1.addView(rateTextView);
+        infoLayout.addView(horizontalInfo1);
+        infoLayout.addView(horizontalInfo2);
 
-        // 5) movieLayout 클릭 이벤트 추가
-        movieLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, MovieDetailActivity.class);
-                intent.putExtra("id",movie.getId());
-                activity.startActivity(intent);
-            }
-        });
+        infoLayout.addView(overviewTextView);
 
-        // 6) 최상위 LinearLayout(movieContainer)에 추가
-        movieContainer.addView(movieLayout);
+        // 5) 전체 컨테이너에 추가
+        movieContainer.addView(posterImageView);
+        movieContainer.addView(infoLayout);
     }
 }
