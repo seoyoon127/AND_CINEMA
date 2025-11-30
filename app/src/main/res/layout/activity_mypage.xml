@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/top_app_bar"
+        layout="@layout/top_app_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+        android:layout_marginTop="10dp">
+
+    <!-- 로그인 전용 UI -->
+        <LinearLayout
+            android:id="@+id/notLoggedInLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="100dp">
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="서비스를 이용하려면 로그인 해주세요"/>
+
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RedRoundButton"
+                android:text="로그인 하러가기"
+                android:onClick="moveToLogin"
+                android:layout_marginTop="30dp"/>
+        </LinearLayout>
+
+        <!-- 로그인 후 전용 UI -->
+        <LinearLayout
+            android:id="@+id/loggedInLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"> <!-- 기본적으로 숨김 -->
+
+            <TextView
+                android:id="@+id/userNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="사용자 이름님, 반가워요!" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RedRoundButton"
+                android:text="로그아웃" />
+            <Button
+                android:id="@+id/myInfoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RedRoundButton"
+                android:text="내 정보" />
+            <Button
+                android:id="@+id/myMovieButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RedRoundButton"
+                android:text="예매 정보" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
