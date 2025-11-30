@@ -68,6 +68,7 @@ public class NowPlayingMovieUI {
                 public void onClick(View view) {
                     Intent intent = new Intent(activity, MovieDetailActivity.class);
                     intent.putExtra("id",movie.getId());
+                    intent.putExtra("prevClass", activity.getClass());
                     activity.startActivity(intent);
                 }
             });
