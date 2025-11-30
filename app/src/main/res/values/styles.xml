@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RedTitle">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#EA3F46</item>
+    </style>
+    <style name="BlackTitle">
+        <item name="android:textSize">26dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="BlackBorderInput">
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:background">@drawable/custom_input</item>
+    </style>
+    <style name="BlackSquareButton">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle"> bold</item>
+        <item name="android:background">@drawable/square_button</item>
+    </style>
+    <style name="RedRoundButton">
+        <item name="android:backgroundTint">#EA3F46</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
