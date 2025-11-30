@@ -19,13 +19,12 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         Intent prevIntent = getIntent();
         int id = prevIntent.getIntExtra("id",0);
-        Class<?> prevActivity = (Class<?>) prevIntent.getSerializableExtra("prevClass");
 
         MaterialToolbar toolbar = findViewById(R.id.top_app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("상세 보기");
 
-        NavigationBar.setNavigate(toolbar, this, prevActivity, MainActivity.class, MyPageActivity.class);
+        NavigationBar.setNavigate(toolbar, this, prevIntent);
 
         UseMovieDetailApi useMovieDetail = new UseMovieDetailApi(this);
         useMovieDetail.loadMovies(id);
