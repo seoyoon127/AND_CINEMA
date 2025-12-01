@@ -41,6 +41,20 @@ public class DBHelper extends SQLiteOpenHelper {
                         "FOREIGN KEY(user_id) REFERENCES user(_id)" +
                         ")"
         );
+        //예매 정보 테이블
+        db.execSQL(
+                "CREATE TABLE user_ticket (" +
+                        "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "user_id INTEGER, " +
+                        "movie_id INTEGER, " +
+                        "theater TEXT, " +
+                        "time TEXT, " +
+                        "seats TEXT, " +
+                        "total_price INTEGER, " +
+                        "FOREIGN KEY(user_id) REFERENCES user(_id)" +
+                        ")"
+        );
+
     }
 
     @Override
