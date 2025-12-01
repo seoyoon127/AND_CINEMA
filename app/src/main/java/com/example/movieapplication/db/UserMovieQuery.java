@@ -1,5 +1,6 @@
 package com.example.movieapplication.db;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -9,9 +10,9 @@ public class UserMovieQuery {
     private DBHelper helper;
     private SQLiteDatabase db;
 
-    public UserMovieQuery(DBHelper helper){
-        this.helper = helper;
-        this.db = helper.getWritableDatabase();
+    public UserMovieQuery(Context context) {
+        DBHelper helper = DBHelper.getInstance(context);
+        db = helper.getWritableDatabase();
     }
     public void likesClick(Integer userId, Integer movieId){
         if (userMovieExist(userId, movieId)) {
