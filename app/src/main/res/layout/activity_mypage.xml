@@ -20,13 +20,15 @@
 
     <!-- 로그인 전용 UI -->
         <LinearLayout
-            android:id="@+id/notLoggedInLayout"
+            android:id="@+id/loggedOutLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_marginTop="100dp">
+
+        <!--            android:visibility="visible"-->
 
 
         <TextView
@@ -53,33 +55,32 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:visibility="gone"> <!-- 기본적으로 숨김 -->
+            android:visibility="visible">
+<!--            android:visibility="gone"> &lt;!&ndash; 기본적으로 숨김 &ndash;&gt;-->
 
             <TextView
                 android:id="@+id/userNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="사용자 이름님, 반가워요!" />
+                android:text="사용자 이름님, 반가워요!"
+                android:layout_marginTop="100dp"/>
 
             <Button
                 android:id="@+id/logoutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/RedRoundButton"
-                android:text="로그아웃" />
-            <Button
-                android:id="@+id/myInfoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/RedRoundButton"
-                android:text="내 정보" />
+                android:onClick="logoutOnClick"
+                android:text="로그아웃"
+                android:layout_marginTop="20dp"/>
             <Button
                 android:id="@+id/myMovieButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/RedRoundButton"
-                android:text="예매 정보" />
+                android:text="예매 정보"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -19,12 +19,13 @@ import com.google.android.material.appbar.MaterialToolbar;
 public class LoginActivity extends AppCompatActivity {
     EditText emailInput, passwordInput;
     UserQuery userQuery;
+    Intent prevIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent prevIntent = getIntent();
+        prevIntent = getIntent();
         userQuery = new UserQuery(this);
 
         MaterialToolbar toolbar = findViewById(R.id.top_app_bar);
