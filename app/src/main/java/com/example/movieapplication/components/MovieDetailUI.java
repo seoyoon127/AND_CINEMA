@@ -20,8 +20,9 @@ import com.example.movieapplication.utils.DateFormat;
 
 public class MovieDetailUI {
 
-    public static void setMovie(Activity activity, MovieDetail movie, LinearLayout movieContainer) {
+    public static void setMovie(Activity activity, MovieDetail movie, LinearLayout movieContainer, LinearLayout buttons) {
 
+        buttons.setVisibility(View.GONE);
         movieContainer.setOrientation(LinearLayout.VERTICAL);
         movieContainer.setBackgroundColor(0xFF000000);
 
@@ -41,9 +42,9 @@ public class MovieDetailUI {
         infoLayout.setOrientation(LinearLayout.VERTICAL);
         infoLayout.setPadding(32, 32, 32, 32);
         LinearLayout.LayoutParams infoParams =
-                new LinearLayout.LayoutParams(MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                new LinearLayout.LayoutParams(imageWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
+        infoParams.setMargins(10, 0, 10, 10);
         infoLayout.setLayoutParams(infoParams);
-
         LinearLayout horizontalInfo1 = new LinearLayout(activity);
         horizontalInfo1.setOrientation(LinearLayout.HORIZONTAL);
         horizontalInfo1.setGravity(Gravity.CENTER);
@@ -106,5 +107,7 @@ public class MovieDetailUI {
         // 5) 전체 컨테이너에 추가
         movieContainer.addView(posterImageView);
         movieContainer.addView(infoLayout);
+
+        buttons.setVisibility(View.VISIBLE);
     }
 }

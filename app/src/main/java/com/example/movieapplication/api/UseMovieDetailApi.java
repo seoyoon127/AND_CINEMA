@@ -22,16 +22,14 @@ public class UseMovieDetailApi {
         api = TMDBApi.getRetrofit().create(TMDBController.class);
     }
 
-    public void loadMovies(int id) {
+    public void loadMovies(int id, LinearLayout buttons) {
         api.getMovieDetail(id).enqueue(new Callback<MovieDetail>() {
             @Override
             public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
-                System.out.println("isNull" + response.body() != null);
                 if (response.isSuccessful() && response.body() != null) {
                     MovieDetail movieDetail = response.body();
-                    System.out.println("movieName: " + movieDetail.getTitle());
                     LinearLayout movieContainer = activity.findViewById(R.id.movieContainer);
-                    MovieDetailUI.setMovie(activity, movieDetail, movieContainer);
+                    MovieDetailUI.setMovie(activity, movieDetail, movieContainer, buttons);
                 }
             }
 

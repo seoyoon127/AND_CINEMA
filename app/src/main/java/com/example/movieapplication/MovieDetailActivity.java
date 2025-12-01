@@ -27,7 +27,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         NavigationBar.setNavigate(toolbar, this, prevIntent);
 
         UseMovieDetailApi useMovieDetail = new UseMovieDetailApi(this);
-        useMovieDetail.loadMovies(id);
+        useMovieDetail.loadMovies(id, findViewById(R.id.buttons));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
