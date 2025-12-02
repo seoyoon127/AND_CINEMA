@@ -22,7 +22,7 @@ public class UseMovieDetailApi {
         api = TMDBApi.getRetrofit().create(TMDBController.class);
     }
 
-    public void loadMovies(int id, LinearLayout buttons) {
+    public void loadMovie(int id, LinearLayout buttons) {
         api.getMovieDetail(id).enqueue(new Callback<MovieDetail>() {
             @Override
             public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
@@ -36,6 +36,40 @@ public class UseMovieDetailApi {
             @Override
             public void onFailure(Call<MovieDetail> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+    }
+
+    public void loadMovieName(int id, MovieNameCallback callback) {
+        api.getMovieDetail(id).enqueue(new Callback<MovieDetail>() {
+            @Override
+            public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onResult(response.body().getTitle());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieDetail> call, Throwable t) {
+                t.printStackTrace();
+                callback.onResult(null);
+            }
+        });
+    }
+
+    public void loadBackdropPath(int id, BackdropCallback callback){
+        api.getMovieDetail(id).enqueue(new Callback<MovieDetail>() {
+            @Override
+            public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onResult(response.body().getBackdropPath());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieDetail> call, Throwable t) {
+                t.printStackTrace();
+                callback.onResult(null);
             }
         });
     }

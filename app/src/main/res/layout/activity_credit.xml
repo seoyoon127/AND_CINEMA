@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+<include
+        android:id="@+id/top_app_bar"
+        layout="@layout/top_app_bar" />
+
+    <ScrollView
+        android:id="@+id/castScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/credits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <ImageView
+                android:id="@+id/posterImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/directorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="감독"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/directorContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="50dp"/>
+
+            <TextView
+                android:id="@+id/castText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="출연진"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/castContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="50dp"/>
+
+            <TextView
+                android:id="@+id/crewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제작진"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/crewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="50dp"/>
+
+            <TextView
+                android:id="@+id/effectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시각효과"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/effectContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="50dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
