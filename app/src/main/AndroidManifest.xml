@@ -26,6 +26,7 @@
         <activity android:name=".MyPageActivity"/>
         <activity android:name=".SignUpActivity"/>
         <activity android:name=".CreditActivity"/>
+        <activity android:name=".BookingActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

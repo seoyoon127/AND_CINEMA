@@ -41,4 +41,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         intent.putExtra("id", id);
         startActivity(intent);
     }
+
+    public void moveToBook(View view){
+        Intent intent = new Intent(this, BookingActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
 }
