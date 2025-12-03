@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.movieapplication.R;
 import com.example.movieapplication.domain.Credit;
+import com.google.android.flexbox.FlexboxLayout;
 
 public class CreditUI {
     public static void setBackdropPath(Activity activity, String backdropPath, ImageView imageView){
@@ -29,7 +30,7 @@ public class CreditUI {
 
     public static void setCreditInfo(Activity activity, Credit credit){
         // 감독, 캐스트, 제작진, 시각 효과
-        LinearLayout targetLayout = null;
+        FlexboxLayout targetLayout = null;
         String department = credit.getKnownForDepartment();
         targetLayout = getLinearLayout(activity, department);
 
@@ -53,9 +54,13 @@ public class CreditUI {
                 new LinearLayout.LayoutParams(200, 200);
         profile.setLayoutParams(imgParams);
 
+        Object imgSource = credit.getProfilePath() != null
+                ? "https://image.tmdb.org/t/p/w200" + credit.getProfilePath()
+                : R.drawable.user_default;
+
         Glide.with(activity)
-                .load("https://image.tmdb.org/t/p/w200" + credit.getProfilePath())
-                .circleCrop() // 원형 이미지
+                .load(imgSource)
+                .circleCrop()
                 .into(profile);
 
         // 2) 이름
@@ -83,8 +88,8 @@ public class CreditUI {
         targetLayout.addView(card);
     }
 
-    private static LinearLayout getLinearLayout(Activity activity, String department) {
-        LinearLayout targetLayout;
+    private static FlexboxLayout getLinearLayout(Activity activity, String department) {
+        FlexboxLayout targetLayout;
         switch (department) {
             case "Acting":
                 targetLayout = activity.findViewById(R.id.castContainer);
@@ -106,7 +111,10 @@ public class CreditUI {
         return targetLayout;
     }
 
-    public static void setCreditNull(Activity activity, LinearLayout layout){
+    public static void setCreditNull(Activity activity, FlexboxLayout layout){
+        if (layout.getChildCount() > 0) {
+            return;
+        }
         TextView emptyText = new TextView(activity);
         emptyText.setText("해당 정보가 없습니다");
         emptyText.setTextSize(16);

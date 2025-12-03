@@ -8,6 +8,7 @@ import com.example.movieapplication.R;
 import com.example.movieapplication.components.CreditUI;
 import com.example.movieapplication.domain.Credit;
 import com.example.movieapplication.domain.CreditResponse;
+import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class UseCreditApi {
     }
 
     public void loadCredits(int id, String backdrop){
-        List<LinearLayout> layouts = Arrays.asList(
+        List<FlexboxLayout> layouts = Arrays.asList(
                 activity.findViewById(R.id.directorContainer),
                 activity.findViewById(R.id.castContainer),
                 activity.findViewById(R.id.crewContainer),
@@ -46,7 +47,7 @@ public class UseCreditApi {
                             for (Credit credit : data.getResults()) {
                                 CreditUI.setCreditInfo(activity, credit);
                             }
-                            for (LinearLayout layout : layouts){
+                            for (FlexboxLayout layout : layouts){
                                 CreditUI.setCreditNull(activity, layout);
                             }
                         }
