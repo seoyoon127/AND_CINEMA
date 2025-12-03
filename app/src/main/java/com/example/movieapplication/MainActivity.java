@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MaterialToolbar toolbar = findViewById(R.id.top_app_bar);
+        toolbar.setTitleTextAppearance(this, R.style.RedTitle);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("AND CINEMA");
 

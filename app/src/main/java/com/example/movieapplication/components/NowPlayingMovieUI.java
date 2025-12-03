@@ -2,6 +2,7 @@ package com.example.movieapplication.components;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +41,7 @@ public class NowPlayingMovieUI {
             TextView titleTextView = new TextView(activity);
             titleTextView.setText(movie.getTitle());
             titleTextView.setTextSize(20);
+            titleTextView.setTextColor(Color.WHITE);
             titleTextView.setSingleLine(true);
             titleTextView.setEllipsize(TextUtils.TruncateAt.END);
             titleTextView.setPadding(16, 0, 0, 0);
@@ -47,11 +49,13 @@ public class NowPlayingMovieUI {
             TextView releaseDateTextView = new TextView(activity);
             releaseDateTextView.setText(String.valueOf(movie.getReleaseDate()));
             releaseDateTextView.setTextSize(16);
+            releaseDateTextView.setTextColor(Color.WHITE);
             releaseDateTextView.setPadding(16, 0, 0, 0);
 
             TextView rateTextView = new TextView(activity);
             rateTextView.setText("⭐" + String.format("%.2f",movie.getVoteAverage()));
             rateTextView.setTextSize(16);
+            rateTextView.setTextColor(Color.WHITE);
             rateTextView.setPadding(16, 0, 0, 0);
 
             // 4) LinearLayout에 ImageView, TextView 추가
