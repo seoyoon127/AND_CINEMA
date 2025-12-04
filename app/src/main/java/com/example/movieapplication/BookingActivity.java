@@ -97,11 +97,15 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     public void moveToSeat(View view){
-        Intent intent = new Intent(this, CreditActivity.class);
+        Intent intent = new Intent(this, SeatActivity.class);
         intent.putExtra("id", id);
         intent.putExtra("theater", theaterSelected);
         intent.putExtra("date", dateSelected);
         intent.putExtra("time", timeSelected);
+        Log.d("BookingActivity", "theaterSelected: " + theaterSelected);
+        Log.d("BookingActivity", "dateSelected: " + dateSelected);
+        Log.d("BookingActivity", "timeSelected: " + timeSelected);
+
         startActivity(intent);
     }
 }

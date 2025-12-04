@@ -18,11 +18,25 @@
     </style>
     <style name="BlackSquareButton">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textStyle"> bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/square_button</item>
     </style>
     <style name="RedRoundButton">
         <item name="android:backgroundTint">#EA3F46</item>
         <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="RedRoundMiniButton">
+        <item name="android:backgroundTint">#EA3F46</item>
+        <item name="android:textColor">#FFFFFF</item>
+
+        <!-- 내부 여백 제거해야 정가운데 맞음 -->
+        <item name="android:padding">0dp</item>
+
+        <!-- 텍스트 중앙 정렬 -->
+        <item name="android:gravity">center</item>
+
+        <!-- 기본 최소 크기 제거 (Button도 있음) -->
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
     </style>
 </resources>
