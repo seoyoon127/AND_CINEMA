@@ -116,7 +116,7 @@ public class Seat2Activity extends AppCompatActivity {
     public void moveToPay(View view){
         int totalSeats = seatCountMap.values().stream().mapToInt(Integer::intValue).sum();
         if (selectedSeats.size() == totalSeats){
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, PayActivity.class);
             intent.putExtra("id", id);
             intent.putExtra("theater", theater);
             intent.putExtra("date", date);

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/top_app_bar"
+        layout="@layout/top_app_bar" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/top_app_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/seatLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/gray_divider"/>
+
+            <LinearLayout
+                android:id="@+id/movieContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingBottom="15dp"/>
+
+            <include layout="@layout/gray_divider"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/theaterContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_between"
+                app:alignItems="center">
+
+                <TextView
+                    android:id="@+id/theaterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="영화관" />
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="날짜" />
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="시간" />
+
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <include layout="@layout/gray_divider"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_between"
+                app:alignItems="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="인원" />
+
+                <TextView
+                    android:id="@+id/peopleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="인원" />
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <include layout="@layout/gray_divider"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_between"
+                app:alignItems="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="선택좌석" />
+
+                <TextView
+                    android:id="@+id/seatText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="선택좌석" />
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <include layout="@layout/gray_divider"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_between"
+                app:alignItems="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="총 금액" />
+
+                <TextView
+                    android:id="@+id/costText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="총 금액" />
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <include layout="@layout/gray_divider"/>
+
+            <TextView
+                android:id="@+id/payText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:text="결제수단" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/payContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexDirection="row"
+                app:justifyContent="space_between"
+                app:alignItems="center">
+
+                <ImageButton
+                    android:id="@+id/lpay"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/lpay"
+                    android:background="@drawable/border_gray"
+                    android:contentDescription="L Pay 버튼"/>
+
+                <ImageButton
+                    android:id="@+id/toss"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/toss"
+                    android:background="@drawable/border_gray"
+                    android:contentDescription="toss 버튼"/>
+
+                <ImageButton
+                    android:id="@+id/naver"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/naver"
+                    android:background="@drawable/border_gray"
+                    android:contentDescription="Naver Pay 버튼"/>
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/nextBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다음"
+                style="@style/BlackSquareButton"
+                android:onClick="moveToPayDone"
+                android:layout_gravity="end"
+                android:layout_marginTop="30dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
