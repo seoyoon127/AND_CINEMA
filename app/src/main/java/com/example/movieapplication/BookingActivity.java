@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +31,7 @@ public class BookingActivity extends AppCompatActivity {
     private String dateSelected;
     public String timeSelected;
     private int id;
+    private Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class BookingActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("예매하기");
 
         NavigationBar.setNavigate(toolbar, this, null);
+        nextBtn = findViewById(R.id.nextBtn);
 
         // 영화 정보 UI
         LinearLayout movieContainer = findViewById(R.id.movieContainer);
@@ -58,16 +61,16 @@ public class BookingActivity extends AppCompatActivity {
 
         // 날짜 선택
         FlexboxLayout dateContainer = findViewById(R.id.dateContainer);
-        BookUI.setDate(this, dateContainer, selectedDate -> this.dateSelected = selectedDate);
+        BookUI.setDate(this, dateContainer, selectedDate -> {
+            this.dateSelected = selectedDate;
+        });
 
         // 시간 선택
         FlexboxLayout timeContainer = findViewById(R.id.timeContainer);
         useMovieDetail.loadMovieTime(id, timeContainer);
-        BookUI.setTimeListener(timeContainer, selectedTime -> this.timeSelected = selectedTime);
     }
 
     public void clickSave(View view){
-        // toggleContainer에서 선택된 영화관 읽기
         for (int i = 0; i < toggleContainer.getChildCount(); i++) {
             LinearLayout sectionLayout = (LinearLayout) toggleContainer.getChildAt(i);
             Switch cityToggle = (Switch) sectionLayout.getChildAt(0);
@@ -97,15 +100,19 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     public void moveToSeat(View view){
-        Intent intent = new Intent(this, SeatActivity.class);
-        intent.putExtra("id", id);
-        intent.putExtra("theater", theaterSelected);
-        intent.putExtra("date", dateSelected);
-        intent.putExtra("time", timeSelected);
-        Log.d("BookingActivity", "theaterSelected: " + theaterSelected);
-        Log.d("BookingActivity", "dateSelected: " + dateSelected);
-        Log.d("BookingActivity", "timeSelected: " + timeSelected);
-
-        startActivity(intent);
+        Log.d("BookingActivity", "moveToSeat called");
+        Log.d("BookingActivity", "theaterSelected=" + theaterSelected);
+        Log.d("BookingActivity", "dateSelected=" + dateSelected);
+        Log.d("BookingActivity", "timeSelected=" + timeSelected);
+        if (theaterSelected != null && dateSelected != null && timeSelected != null){
+            Intent intent = new Intent(this, SeatActivity.class);
+            intent.putExtra("id", id);
+            intent.putExtra("theater", theaterSelected);
+            intent.putExtra("date", dateSelected);
+            intent.putExtra("time", timeSelected);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this,"모든 항목을 선택하셔야 합니다.",Toast.LENGTH_SHORT).show();
+        }
     }
 }

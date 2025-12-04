@@ -29,12 +29,12 @@ public class MovieDetailUI {
         // 1) 포스터 전체 영역
         ImageView posterImageView = new ImageView(activity);
         int imageWidth = MATCH_PARENT;
-        int imageHeight = 1200;
+        int imageHeight = 600;
         LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(imageWidth, imageHeight);
         imageParams.setMargins(10,30,10,10);
         posterImageView.setLayoutParams(imageParams);
 
-        Glide.with(activity) .load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath()) .into(posterImageView);
+        Glide.with(activity) .load("https://image.tmdb.org/t/p/w500" + movie.getBackdropPath()) .into(posterImageView);
 
 
         // 2) 하단 Info 영역
