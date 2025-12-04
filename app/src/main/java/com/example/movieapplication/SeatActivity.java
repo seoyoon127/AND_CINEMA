@@ -95,12 +95,12 @@ public class SeatActivity extends AppCompatActivity {
     }
 
     public void moveToPay(View view){
-        Intent intent = new Intent(this, MovieDetailActivity.class);
+        Intent intent = new Intent(this, Seat2Activity.class);
         intent.putExtra("id", id);
         intent.putExtra("theater", theater);
         intent.putExtra("date", date);
         intent.putExtra("time", time);
-        intent.putExtra("seatMap", new HashMap<>(seatCountMap)); // 좌석 수 전달
+        intent.putExtra("seatMap", new HashMap<>(seatCountMap));
         startActivity(intent);
     }
 }
