@@ -3,12 +3,15 @@ package com.example.movieapplication;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +20,9 @@ import com.example.movieapplication.components.NavigationBar;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Seat2Activity extends AppCompatActivity {
@@ -26,6 +31,8 @@ public class Seat2Activity extends AppCompatActivity {
     private String date;
     private String time;
     private Map<String, Integer> seatCountMap;
+    private List<String> selectedSeats = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +96,11 @@ public class Seat2Activity extends AppCompatActivity {
                 seatBtn.setOnClickListener(v -> {
                     v.setSelected(!v.isSelected());
                     seatBtn.setTextColor(v.isSelected()? Color.WHITE : Color.BLACK);
+                    if (v.isSelected()) {
+                        if (!selectedSeats.contains(seatName)) selectedSeats.add(seatName);
+                    } else {
+                        selectedSeats.remove(seatName);
+                    }
                 });
 
                 container.addView(seatBtn);
@@ -99,5 +111,21 @@ public class Seat2Activity extends AppCompatActivity {
     private int dpToPx(int dp) {
         float density = getResources().getDisplayMetrics().density;
         return Math.round(dp * density);
+    }
+
+    public void moveToPay(View view){
+        int totalSeats = seatCountMap.values().stream().mapToInt(Integer::intValue).sum();
+        if (selectedSeats.size() == totalSeats){
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("id", id);
+            intent.putExtra("theater", theater);
+            intent.putExtra("date", date);
+            intent.putExtra("time", time);
+            intent.putExtra("seatMap", new HashMap<>(seatCountMap));
+            intent.putStringArrayListExtra("selectedSeats", new ArrayList<>(selectedSeats));
+            startActivity(intent);   
+        } else {
+            Toast.makeText(this, totalSeats + "좌석을 선택해주세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

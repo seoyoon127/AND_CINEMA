@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -94,13 +95,19 @@ public class SeatActivity extends AppCompatActivity {
         });
     }
 
-    public void moveToPay(View view){
-        Intent intent = new Intent(this, Seat2Activity.class);
-        intent.putExtra("id", id);
-        intent.putExtra("theater", theater);
-        intent.putExtra("date", date);
-        intent.putExtra("time", time);
-        intent.putExtra("seatMap", new HashMap<>(seatCountMap));
-        startActivity(intent);
+    public void moveToSeat2(View view){
+        int totalSeats = seatCountMap.values().stream().mapToInt(Integer::intValue).sum();
+
+        if (totalSeats != 0) {
+            Intent intent = new Intent(this, Seat2Activity.class);
+            intent.putExtra("id", id);
+            intent.putExtra("theater", theater);
+            intent.putExtra("date", date);
+            intent.putExtra("time", time);
+            intent.putExtra("seatMap", new HashMap<>(seatCountMap));
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "인원을 선택해주세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

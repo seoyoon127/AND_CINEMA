@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="다음"
                 style="@style/BlackSquareButton"
-                android:onClick="moveToPay"
+                android:onClick="moveToSeat2"
                 android:layout_gravity="end"
                 android:layout_marginTop="30dp"/>
 
