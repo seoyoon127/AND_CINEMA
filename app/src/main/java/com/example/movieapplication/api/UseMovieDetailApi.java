@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.movieapplication.BookingActivity;
 import com.example.movieapplication.R;
 import com.example.movieapplication.components.BookUI;
+import com.example.movieapplication.components.LikesUI;
 import com.example.movieapplication.components.MovieDetailUI;
 import com.example.movieapplication.domain.MovieDetail;
 import com.google.android.flexbox.FlexboxLayout;
 
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -117,4 +120,36 @@ public class UseMovieDetailApi {
             }
         });
     }
+
+    public void loadMoviePoster(Integer id, PosterCallback callback){
+        api.getMovieDetail(id).enqueue(new Callback<MovieDetail>() {
+            @Override
+            public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
+                if(response.isSuccessful() && response.body() != null){
+                    String posterPath = response.body().getPosterPath();
+                    if (posterPath != null && !posterPath.isEmpty()) {
+                        String url = "https://image.tmdb.org/t/p/w500" + posterPath;
+                        callback.onResult(url); // URL만 전달
+                    } else {
+                        callback.onResult(null);
+                    }
+                } else {
+                    callback.onResult(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieDetail> call, Throwable t) {
+                t.printStackTrace();
+                callback.onResult(null);
+            }
+        });
+    }
+
+
+    // 콜백 인터페이스 정의
+    public interface PosterCallback {
+        void onResult(String posterUrl);
+    }
+
 }

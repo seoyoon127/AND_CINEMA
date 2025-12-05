@@ -99,4 +99,8 @@ public class MyPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void likeListOnClick(View view){
+        Intent intent= new Intent(this, LikesActivity.class);
+        startActivity(intent);
+    }
 }

@@ -3,8 +3,12 @@ package com.example.movieapplication.db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.movieapplication.domain.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMovieQuery {
     private DBHelper helper;
@@ -22,7 +26,7 @@ public class UserMovieQuery {
             updateLike(userId, movieId, newLike);
 
         } else {
-            insertUserMovie(userId, movieId,null);
+            insertUserMovie(userId, movieId, null);
         }
     }
 
@@ -47,7 +51,7 @@ public class UserMovieQuery {
         return exists;
     }
 
-    private int getCurrentLike(Integer userId, Integer movieId) {
+    public int getCurrentLike(Integer userId, Integer movieId) {
         String sql = "SELECT likes FROM user_movie WHERE user_id = ? AND movie_id = ?";
         Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(userId), String.valueOf(movieId)});
 
@@ -59,6 +63,24 @@ public class UserMovieQuery {
 
         cursor.close();
         return like;
+    }
+
+    public List<Integer> getAllLikes(Integer userId) {
+        String sql = "SELECT movie_id FROM user_movie WHERE user_id = ? AND likes = 1";
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(userId)});
+        List<Integer> movieIdList = new ArrayList<>();
+
+        if(cursor.moveToFirst()){
+            do{
+                int idx = cursor.getColumnIndex("movie_id");
+                if(idx != -1){
+                    movieIdList.add(cursor.getInt(idx));
+                }
+            } while(cursor.moveToNext());
+        }
+
+        cursor.close();
+        return movieIdList;
     }
 
     private void updateLike(Integer userId, Integer movieId, int newLike) {

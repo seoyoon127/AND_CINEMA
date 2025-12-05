@@ -61,4 +61,22 @@
         </LinearLayout>
     </ScrollView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/likeBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="0dp"
+        android:text="♡"
+        android:onClick="likeOnClick"
+        android:textColor="#EA3F46"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        app:backgroundTint="#FFFFFF"
+        app:strokeColor="#EA3F46"
+        app:strokeWidth="2dp"
+        app:cornerRadius="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintEnd_toEndOf="@id/top_app_bar"
+        android:layout_margin="20dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

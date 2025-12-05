@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.movieapplication.api.UseMovieApi;
 import com.example.movieapplication.components.NavigationBar;
+import com.example.movieapplication.db.UserMovieQuery;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         movieApi = new UseMovieApi(this);
         movieApi.loadMovies("now_playing");
-
-
         sortText = findViewById(R.id.sortText);
     }
     @Override
