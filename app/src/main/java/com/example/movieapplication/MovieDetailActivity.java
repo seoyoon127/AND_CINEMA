@@ -1,9 +1,11 @@
 package com.example.movieapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,8 +45,17 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     public void moveToBook(View view){
-        Intent intent = new Intent(this, BookingActivity.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        int userId = prefs.getInt("user_id", -1);
+
+        if(userId == -1){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "해당 서비스를 이용하려면 로그인해주세요",Toast.LENGTH_SHORT);
+        } else{
+            Intent intent = new Intent(this, BookingActivity.class);
+            intent.putExtra("id", id);
+            startActivity(intent);
+        }
     }
 }
