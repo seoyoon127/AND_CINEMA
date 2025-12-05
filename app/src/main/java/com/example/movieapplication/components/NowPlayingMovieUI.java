@@ -17,7 +17,6 @@ import com.example.movieapplication.utils.DateFormat;
 public class NowPlayingMovieUI {
     public static void setMovie(Activity activity, Movie movie, LinearLayout movieContainer){
 
-        if (DateFormat.isInRange(movie)){
             // 1) 영화마다 LinearLayout 생성 (세로로 이미지+텍스트)
             LinearLayout movieLayout = new LinearLayout(activity);
             LinearLayout infoLayout = new LinearLayout(activity);
@@ -80,5 +79,4 @@ public class NowPlayingMovieUI {
             // 6) 최상위 LinearLayout(movieContainer)에 추가
             movieContainer.addView(movieLayout);
         }
-    }
 }

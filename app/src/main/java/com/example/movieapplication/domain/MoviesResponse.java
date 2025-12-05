@@ -1,11 +1,10 @@
 package com.example.movieapplication.domain;
 
-import com.example.movieapplication.domain.Movie;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class NowPlayingResponse {
+public class MoviesResponse {
 
     @SerializedName("results")
     private List<Movie> results;

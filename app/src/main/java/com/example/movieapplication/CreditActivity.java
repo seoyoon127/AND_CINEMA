@@ -3,14 +3,11 @@ package com.example.movieapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.movieapplication.api.MovieNameCallback;
 import com.example.movieapplication.api.UseCreditApi;
 import com.example.movieapplication.api.UseMovieDetailApi;
-import com.example.movieapplication.api.UseNowPlayingApi;
 import com.example.movieapplication.components.NavigationBar;
 import com.google.android.material.appbar.MaterialToolbar;
 

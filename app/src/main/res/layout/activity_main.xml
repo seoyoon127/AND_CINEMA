@@ -9,23 +9,47 @@
         android:id="@+id/top_app_bar"
         layout="@layout/top_app_bar" />
 
-    <TextView
-        android:id="@+id/nowPlayingText"
-        android:layout_width="wrap_content"
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/sortTop"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="상영중"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        app:flexDirection="row"
+        app:alignItems="center"
+        app:justifyContent="space_between"
         app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/sortText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상영중"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sortBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sortBtnClick"
+            android:text="조건 변경 ▼"
+            style="@style/RedRoundButton"
+            app:backgroundTint="#FFFFFF" />
+
+
+    </com.google.android.flexbox.FlexboxLayout>
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/nowPlayingText"
+        app:layout_constraintTop_toBottomOf="@+id/sortTop"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp">
 
