@@ -30,6 +30,8 @@
         <activity android:name=".SeatActivity"/>
         <activity android:name=".Seat2Activity"/>
         <activity android:name=".PayActivity"/>
+        <activity android:name=".PayDoneActivity"/>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

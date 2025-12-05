@@ -111,7 +111,7 @@ public class PayActivity extends AppCompatActivity {
         if (userId != -1 && ticket != null){
             UserTicketQuery userTicketQuery = new UserTicketQuery(this);
             userTicketQuery.saveTicket(userId, id, ticket);
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, PayDoneActivity.class);
             intent.putExtra("img", clickedRes);
             startActivity(intent);
             Toast.makeText(this, "결제되었습니다.", Toast.LENGTH_SHORT).show();
