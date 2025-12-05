@@ -95,7 +95,8 @@ public class PayActivity extends AppCompatActivity {
         naver.setOnClickListener(payClickListener);
 
         Ticket newTicket = new Ticket();
-        ticket = newTicket.createTicket(theater, date, time, seatCountMap, cost);
+        ticket = newTicket.createTicket(id,theater, date, time, seatCountMap, cost);
+
     }
 
     @Override

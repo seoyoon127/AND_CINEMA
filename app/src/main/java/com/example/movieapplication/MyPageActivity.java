@@ -33,7 +33,6 @@ public class MyPageActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("마이페이지");
 
         NavigationBar.setNavigate(toolbar, this, prevIntent);
-
         setUIByLogin();
     }
 
@@ -93,6 +92,11 @@ public class MyPageActivity extends AppCompatActivity {
             Toast.makeText(this, "로그아웃 실패", Toast.LENGTH_SHORT).show();
         }
         
+    }
+
+    public void ticketOnClick(View view){
+        Intent intent = new Intent(this, TicketActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -16,8 +16,8 @@ public class UserTicketQuery {
     private SQLiteDatabase db;
 
     public UserTicketQuery(Context context) {
-        DBHelper helper = DBHelper.getInstance(context);
-        db = helper.getWritableDatabase();
+        this.helper = DBHelper.getInstance(context);
+        this.db = helper.getWritableDatabase();
     }
 
     public void saveTicket(Integer userId, Integer movieId, Ticket ticket){
@@ -28,21 +28,24 @@ public class UserTicketQuery {
     }
 
     public List<Ticket> getTickets(Integer userId){
+
         String sql = "SELECT * FROM user_ticket WHERE user_id = ?";
         Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(userId)});
         List<Ticket> tickets = new ArrayList<>();
 
         while (cursor.moveToNext()) {
 
+            int movieId = cursor.getInt(cursor.getColumnIndexOrThrow("movie_id"));
+
             String theater = cursor.getString(cursor.getColumnIndexOrThrow("theater"));
 
-            String dateTime = cursor.getString(cursor.getColumnIndexOrThrow("datetime"));
+            String dateTime = cursor.getString(cursor.getColumnIndexOrThrow("time"));
 
             String jsonSeats = cursor.getString(cursor.getColumnIndexOrThrow("seats"));
 
-            int totalPrice = cursor.getInt(cursor.getColumnIndexOrThrow("totalPrice"));
+            int totalPrice = cursor.getInt(cursor.getColumnIndexOrThrow("total_price"));
 
-            Ticket ticket = new Ticket(theater, dateTime, jsonSeats, totalPrice);
+            Ticket ticket = new Ticket(movieId, theater, dateTime, jsonSeats, totalPrice);
             tickets.add(ticket);
         }
 
