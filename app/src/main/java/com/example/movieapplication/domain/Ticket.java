@@ -5,42 +5,30 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 
 public class Ticket implements Serializable {
     private int movieId;
     private String theater;
     private String dateTime;
-    private String jsonSeats;
+    private List<String> seatList;
     private Integer totalPrice;
 
     public Ticket() {
     }
 
-    public Ticket(int movieId, String theater, String dateTime, String jsonSeats, Integer totalPrice) {
+    public Ticket(int movieId, String theater, String dateTime,  List<String> seatList, Integer totalPrice) {
         this.movieId = movieId;
         this.theater = theater;
         this.dateTime = dateTime;
-        this.jsonSeats = jsonSeats;
+        this.seatList = seatList;
         this.totalPrice = totalPrice;
     }
 
-    public Ticket createTicket(int movieId, String theater, String date, String time, Map<String, Integer> seatCountMap, Integer cost) {
+    public Ticket createTicket(int movieId, String theater, String date, String time, List<String> seatList, Integer cost) {
         String dateTime = date + " " + time;
-
-        JSONObject seatJson = new JSONObject();
-        for (Map.Entry<String, Integer> entry : seatCountMap.entrySet()) {
-            if (entry.getValue() > 0) {
-                try {
-                    seatJson.put(entry.getKey(), entry.getValue());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        String jsonSeats = seatJson.toString();
-
-        return new Ticket(movieId,theater, dateTime, jsonSeats, cost);
+        return new Ticket(movieId,theater, dateTime, seatList, cost);
     }
 
     public int getMovieId() {
@@ -54,9 +42,8 @@ public class Ticket implements Serializable {
     public String getDateTime() {
         return dateTime;
     }
-
-    public String getJsonSeats() {
-        return jsonSeats;
+    public List<String> getSeatList() {
+        return seatList;
     }
 
     public Integer getTotalPrice() {

@@ -3,6 +3,7 @@ package com.example.movieapplication.components;
 import android.app.Activity;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -39,14 +40,16 @@ public class TicketUI {
             TextView movie = item.findViewById(R.id.movieTitle);
             TextView theater = item.findViewById(R.id.theaterText);
             TextView date = item.findViewById(R.id.dateText);
+            TextView seat = item.findViewById(R.id.seatText);
             TextView price = item.findViewById(R.id.priceText);
 
             UseMovieDetailApi useMovieDetail = new UseMovieDetailApi(activity);
             useMovieDetail.loadMovieName(t.getMovieId(), name -> {
-                movie.setText("영화 제목: " + name);
+                movie.setText(name);
             });
-            theater.setText("극장: " + t.getTheater());
-            date.setText("일시: " + t.getDateTime());
+            theater.setText(t.getTheater()+"점");
+            date.setText(t.getDateTime());
+            seat.setText(TextUtils.join(", ", t.getSeatList()));
             price.setText("결제금액: " + t.getTotalPrice() + "원");
 
             container.addView(item);
