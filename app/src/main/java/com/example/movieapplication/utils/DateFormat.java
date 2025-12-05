@@ -1,6 +1,7 @@
 package com.example.movieapplication.utils;
 
 import com.example.movieapplication.domain.Movie;
+import com.example.movieapplication.domain.MovieDetail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateFormat {
-    public static boolean isInRange(Movie movie) {
+    public static boolean isInRange(MovieDetail movie) {
         String releaseDateStr = movie.getReleaseDate();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
