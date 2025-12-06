@@ -55,12 +55,17 @@
 - 최종 금액 합산하여 표기
 - 실제로 결제되진 않음
 
+### 마이페이지
+<img width="235" height="510" alt="image" src="https://github.com/user-attachments/assets/19e74295-fa0d-464c-959b-447281f3779b" />
+
+
 ### 예매 내역
-<img width="235" height="510" alt="image" src="https://github.com/user-attachments/assets/f8cab97d-7ee8-49cf-91e2-be3babc39afa" />
+<img width="462" height="457" alt="image" src="https://github.com/user-attachments/assets/2bcb6f02-87b0-48de-bf4d-dc851d72467f" />
+
 
 - 영화 제목, 극장, 상영 일시, 좌석, 결제금액 표기
 - 최근 항목: 오늘 혹은 그 이후 영화 목록
-- 전체: 날짜 상관없이 모든 티켓 내역
+- 이전 항목: 만료된 티켓
 
 
 ### 좋아요 목록
@@ -68,3 +73,9 @@
 
 - 좋아요한 영화 사진 정렬
 - 사진 클릭 시 영화 상세로 이동
+
+## 실행 영상
+
+https://github.com/user-attachments/assets/6bd67c86-f475-4473-8c3c-2fa4421400ce
+
+
