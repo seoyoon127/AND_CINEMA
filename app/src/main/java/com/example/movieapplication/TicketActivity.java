@@ -20,7 +20,7 @@ import java.util.List;
 public class TicketActivity extends AppCompatActivity {
     List<Ticket> ticketList;
     MaterialButton recentBtn, allBtn;
-    boolean recent = true;
+    boolean recent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +39,9 @@ public class TicketActivity extends AppCompatActivity {
         ticketList = userTicketQuery.getTickets(userId);
 
         recentBtn = findViewById(R.id.recentBtn);
-        allBtn = findViewById(R.id.allBtn);
+        allBtn = findViewById(R.id.prevBtn);
 
+        recent = true;
         TicketUI.setTicketList(this, ticketList, recent);
     }
     @Override
@@ -52,10 +53,12 @@ public class TicketActivity extends AppCompatActivity {
     public void recentTickets(View view){
         recent = true;
         TicketUI.setButton(this, recentBtn, allBtn);
+        TicketUI.setTicketList(this, ticketList, recent);
     }
 
-    public void allTickets(View view){
+    public void prevTickets(View view){
         recent = false;
         TicketUI.setButton(this, allBtn, recentBtn);
+        TicketUI.setTicketList(this, ticketList, recent);
     }
 }

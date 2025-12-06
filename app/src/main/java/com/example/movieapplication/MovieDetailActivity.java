@@ -59,6 +59,8 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     public void moveToBook(View view){
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        userId = prefs.getInt("user_id", -1);
         if(userId == -1){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

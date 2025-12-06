@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 public class FilterTicket {
 
     public static List<Ticket> filterTickets(List<Ticket> ticketList, boolean recent) {
-        if (!recent) return ticketList;
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 
         // 오늘 날짜(00:00:00)
@@ -32,8 +30,13 @@ public class FilterTicket {
                         Date ticketDate = sdf.parse(dateStr);
                         if (ticketDate == null) return false;
 
-                        // 오늘 이후(포함)만
-                        return !ticketDate.before(today);
+                        if (recent) {
+                            // 오늘 이후(포함)만
+                            return !ticketDate.before(today);
+                        } else {
+                            // 오늘 이전만
+                            return ticketDate.before(today);
+                        }
 
                     } catch (ParseException | ArrayIndexOutOfBoundsException e) {
                         return false;

@@ -3,6 +3,7 @@ package com.example.movieapplication.db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.movieapplication.domain.Ticket;
 import com.example.movieapplication.domain.User;

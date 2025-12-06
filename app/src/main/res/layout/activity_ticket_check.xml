@@ -31,11 +31,11 @@
             android:text="최근" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/allBtn"
+            android:id="@+id/prevBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="allTickets"
-            android:text="전체"
+            android:onClick="prevTickets"
+            android:text="이전"
             android:textColor="#EA3F46"
             app:strokeColor="#EA3F46"
             app:strokeWidth="2dp"
