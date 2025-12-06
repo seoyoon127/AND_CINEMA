@@ -35,8 +35,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         NavigationBar.setNavigate(toolbar, this, prevIntent);
 
-        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
-        userId = prefs.getInt("user_id", -1);
+        setUserId();
 
         UseMovieDetailApi useMovieDetail = new UseMovieDetailApi(this);
         useMovieDetail.loadMovie(id, findViewById(R.id.buttons));
@@ -59,8 +58,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     public void moveToBook(View view){
-        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
-        userId = prefs.getInt("user_id", -1);
+        setUserId();
         if(userId == -1){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -72,12 +70,19 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
     }
 
+    private void setUserId() {
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        userId = prefs.getInt("user_id", -1);
+    }
+
     public void likeOnClick(View view){
+        setUserId();
         userMovieQuery.likesClick(userId, id);
         checkLike();
     }
 
     public void checkLike(){
+        setUserId();
         int cur = userMovieQuery.getCurrentLike(userId, id);
         if (cur == 1){
             likeBtn.setText("♥\uFE0F");
@@ -85,4 +90,6 @@ public class MovieDetailActivity extends AppCompatActivity {
             likeBtn.setText("♡");
         }
     }
+
+
 }
