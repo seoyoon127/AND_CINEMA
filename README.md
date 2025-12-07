@@ -76,6 +76,9 @@
 
 ## 실행 영상
 
-https://github.com/user-attachments/assets/6bd67c86-f475-4473-8c3c-2fa4421400ce
+
+https://github.com/user-attachments/assets/5823f34e-ce42-42db-9238-50bd36f73482
+
+
 
 
