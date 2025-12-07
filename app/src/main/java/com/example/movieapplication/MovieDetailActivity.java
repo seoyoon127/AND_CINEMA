@@ -77,12 +77,17 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     public void likeOnClick(View view){
         setUserId();
-        userMovieQuery.likesClick(userId, id);
-        checkLike();
+        if(userId == -1){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "해당 서비스를 이용하려면 로그인해주세요",Toast.LENGTH_SHORT);
+        } else {
+            userMovieQuery.likesClick(userId, id);
+            checkLike();
+        }
     }
 
     public void checkLike(){
-        setUserId();
         int cur = userMovieQuery.getCurrentLike(userId, id);
         if (cur == 1){
             likeBtn.setText("♥\uFE0F");
