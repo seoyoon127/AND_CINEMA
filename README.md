@@ -56,7 +56,7 @@
 - 실제로 결제되진 않음
 
 ### 마이페이지
-<img width="235" height="510" alt="image" src="https://github.com/user-attachments/assets/19e74295-fa0d-464c-959b-447281f3779b" />
+<img width="449" height="430" alt="image" src="https://github.com/user-attachments/assets/19e74295-fa0d-464c-959b-447281f3779b" />
 
 
 ### 예매 내역
